@@ -1,0 +1,226 @@
+<!DOCTYPE HTML>
+<!--
+    Ex Machina by TEMPLATED
+    templated.co @templatedco
+    Released for free under the Creative Commons Attribution 3.0 license (templated.co/license)
+-->
+<html>
+	<head>
+		<title>Bloomington Amaetur Radio Club</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link rel="shortcut icon" href="../favicon.ico"> 
+		<link rel="stylesheet" type="text/css" href="css/calendar.css" />
+		<link rel="stylesheet" type="text/css" href="css/custom_2.css" />
+		<script src="js/modernizr.custom.63321.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="./cal.css" media="screen">
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-desktop.css" />
+			<link rel="stylesheet" href="css/table-t.css" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie/v9.css" /><![endif]-->
+	</head>
+	<body class="homepage">
+
+	<!-- Header -->
+		<div id="header">
+			<div class="container">
+					
+				<!-- Logo -->
+					<div id="logo">
+						<h1><a>Events</a></h1><br/>
+						<h1><a>Calendar</a></h1>
+					</div>
+				
+				<!-- Nav -->
+					<nav id="primary_nav_wrap">
+						<br/>
+						<ul>
+							<li><a href="index.html">Home</a></li>
+							<li><a href="about.html">About</a></li>
+							<li><a href="freq.html">Frequencies</a></li>
+							<li class="active"><a href="">Schedule</a>
+							   <ul>
+							     <li><a href="nets.html">Nets</a></li>
+							     <li><a href="meetings.html">Club Meetings</a></li>
+							     <li><a href="nco.html">NCO Schedule</a></li>
+							     <li><a href="cal.html">Calendar</a></li>
+							   </ul>
+							</li>
+							<li><a href="">Info</a>
+							   <ul>
+							     <li><a href="member.html">Membership</a></li>
+							     <li><a href="ve.html">VE Testing</a></li>
+
+							     <li><a href="aresraces.html">EmComm</a></li>
+							     <li><a href="faqs.html">FAQs</a></li>
+
+							     <li><a href="contact.html">Contact Us</a></li>
+							   </ul>
+   							</li>
+						</ul>
+					</nav>
+
+			</div>
+		</div>
+	<!-- Header -->
+		
+	<!-- Banner 
+		<div id="banner">
+			<div class="container">
+			</div>
+		</div>
+	-->
+
+	<!-- Main -->
+		<div id="page">
+
+			<!-- Main -->
+			<div id="main" class="container">
+				<div class="row">
+					<div class="9u">
+
+			<!-- Codrops top bar -->
+			<section class="main">
+				<div class="custom-calendar-wrap">
+<div align="center">Click on the date with the dot below to see event details.</div>
+					<div id="custom-inner" class="custom-inner">
+						<div class="custom-header clearfix">
+							<nav>
+								<span id="custom-prev" class="custom-prev"></span>
+								<span id="custom-next" class="custom-next"></span>
+							</nav>
+							<h2 id="custom-month" class="custom-month"></h2>
+							<h3 id="custom-year" class="custom-year"></h3>
+						</div>
+						<div id="calendar" class="fc-calendar-container"></div>
+						<div align="center">Calendar courtsey of <a href="https://tympanus.net/codrops/">Codrops</a></div>
+					</div>
+				</div>
+			</section>
+		</div><!-- /container -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.calendario.js"></script>
+		<script type="text/javascript" src="js/data.js"></script>
+		<script type="text/javascript">	
+			$(function() {
+			
+				var transEndEventNames = {
+						'WebkitTransition' : 'webkitTransitionEnd',
+						'MozTransition' : 'transitionend',
+						'OTransition' : 'oTransitionEnd',
+						'msTransition' : 'MSTransitionEnd',
+						'transition' : 'transitionend'
+					},
+					transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+					$wrapper = $( '#custom-inner' ),
+					$calendar = $( '#calendar' ),
+					cal = $calendar.calendario( {
+						onDayClick : function( $el, $contentEl, dateProperties ) {
+
+							if( $contentEl.length > 0 ) {
+								showEvents( $contentEl, dateProperties );
+							}
+
+						},
+						caldata : codropsEvents,
+						displayWeekAbbr : true
+					} ),
+					$month = $( '#custom-month' ).html( cal.getMonthName() ),
+					$year = $( '#custom-year' ).html( cal.getYear() );
+
+				$( '#custom-next' ).on( 'click', function() {
+					cal.gotoNextMonth( updateMonthYear );
+				} );
+				$( '#custom-prev' ).on( 'click', function() {
+					cal.gotoPreviousMonth( updateMonthYear );
+				} );
+
+				function updateMonthYear() {				
+					$month.html( cal.getMonthName() );
+					$year.html( cal.getYear() );
+				}
+
+				// just an example..
+				function showEvents( $contentEl, dateProperties ) {
+
+					hideEvents();
+					
+					var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year + '</h4></div>' ),
+						$close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents );
+
+					$events.append( $contentEl.html() , $close ).insertAfter( $wrapper );
+					
+					setTimeout( function() {
+						$events.css( 'top', '0%' );
+					}, 25 );
+
+				}
+				function hideEvents() {
+
+					var $events = $( '#custom-content-reveal' );
+					if( $events.length > 0 ) {
+						
+						$events.css( 'top', '100%' );
+						Modernizr.csstransitions ? $events.on( transEndEventName, function() { $( this ).remove(); } ) : $events.remove();
+
+					}
+
+				}
+			
+			});
+		</script>
+
+
+
+
+                                        <div class="3u">
+                                                <section class="sidebar">
+                                                        <header></header>
+                                                        <header>
+                                                                <h2>Quick Links</h2>
+                                                        </header>
+
+                                                        <form>
+                                                                <select name="URL" onchange="window.location.href= this.form.URL.options[this.form.URL.selectedIndex].value">
+									<option value="">Select a link</option>
+									<option value="ve.html">VE Testing</option>
+									<option value="nets.html">BARC Nets</option>
+									<option value="cal.html">Events Calendar</option>
+									<option value="nets.html">Nets by Weekday</option>
+									<option value="nco.html">NCO schedule</option>
+									<option value="aresraces.html">ARES/RACES</option>
+									<option value="faqs.html">FAQs</option>
+									<option value="member.html">Membership</option>
+									<option value="contact.html">Contact BARC</option>
+                                                                </select>
+                                                        </form>
+                                                </section>
+                                        </div>
+
+				</div>
+			</div>
+			<!-- Main -->
+
+		</div>
+	<!-- /Main -->
+
+	
+	<!-- Copyright -->
+		<div id="copyright" class="container">
+			Design: <a href="http://templated.co">TEMPLATED</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)
+		</div>
+
+
+	</body>
+</html>
