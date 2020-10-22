@@ -101,7 +101,7 @@ Everyone is welcome to join.  All you need is an interest in ham radio for enjoy
 <h3>Renewals</h3>
 <p></p>
 <p>Existing members can renew their memberships at a monthly club meeting or by making arrangements with a club officer.</p>
-<-- added by TH -->
+<!-- added by TH -->
 <div id="smart-button-container">
       <div style="text-align: center;">
         <div id="paypal-button-container"></div>
@@ -115,13 +115,13 @@ Everyone is welcome to join.  All you need is an interest in ham radio for enjoy
           shape: 'rect',
           color: 'gold',
           layout: 'vertical',
-          label: 'paypal',
+          label: 'buynow',
           
         },
 
         createOrder: function(data, actions) {
           return actions.order.create({
-            purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
+            purchase_units: [{"description":"Membership - Individual","amount":{"currency_code":"USD","value":1}}]
           });
         },
 
